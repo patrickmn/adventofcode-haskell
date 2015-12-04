@@ -5,8 +5,6 @@ import Crypto.Hash (Digest, MD5, hash, digestToHexByteString)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8 as BC
 
-import AdventofCode.Util (getInput)
-
 day04a :: ByteString -> Int
 day04a input = head $ filter (checkPrefix input "00000") [1..]
 

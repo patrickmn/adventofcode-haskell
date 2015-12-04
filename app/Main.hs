@@ -89,4 +89,4 @@ main = do
         "24b" -> getInput "input/day24" >>= print . day24b
         "25a" -> getInput "input/day25" >>= print . day25a
         "25b" -> getInput "input/day25" >>= print . day25b
-        _    -> printf "Problem '%s' not found" arg
+        _     -> printf "Problem '%s' not found" arg

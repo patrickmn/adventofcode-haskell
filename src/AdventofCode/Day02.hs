@@ -3,8 +3,6 @@ module AdventofCode.Day02 (day02a, day02b) where
 import Data.List (sort)
 import Data.List.Split (splitOn)
 
-import AdventofCode.Util (getInput)
-
 day02a :: String -> Int
 day02a input = foldr (f . parse) 0 (lines input)
   where

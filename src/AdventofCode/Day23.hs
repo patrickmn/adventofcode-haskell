@@ -1,13 +1,7 @@
 module AdventofCode.Day23 (day23a, day23b) where
 
-import AdventofCode.Util (getInput)
+day23a :: String -> Int
+day23a input = undefined
 
-day23a :: IO Int
-day23a = do
-    input <- getInput "input/day23"
-    undefined
-
-day23b :: IO Int
-day23b = do
-    input <- getInput "input/day23"
-    undefined
+day23b :: String -> Int
+day23b input = undefined

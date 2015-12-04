@@ -7,10 +7,8 @@ import qualified Data.ByteString.Char8 as BC
 
 import AdventofCode.Util (getInput)
 
-day04a :: IO Int
-day04a = do
-    input <- BC.pack <$> getInput "input/day04"
-    return $ head $ filter (checkPrefix input "00000") [1..]
+day04a :: ByteString -> Int
+day04a input = head $ filter (checkPrefix input "00000") [1..]
 
 checkPrefix :: ByteString -> ByteString -> Int -> Bool
 checkPrefix input prefix num = prefix `BC.isPrefixOf` digestToHexByteString d
@@ -18,7 +16,5 @@ checkPrefix input prefix num = prefix `BC.isPrefixOf` digestToHexByteString d
     d :: Digest MD5
     d = hash $ input `BC.append` BC.pack (show num)
 
-day04b :: IO Int
-day04b = do
-    input <- BC.pack <$> getInput "input/day04"
-    return $ head $ filter (checkPrefix input "000000") [1..]
+day04b :: ByteString -> Int
+day04b input = head $ filter (checkPrefix input "000000") [1..]

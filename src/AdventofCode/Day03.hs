@@ -5,39 +5,32 @@ import qualified Data.Set as S
 
 import AdventofCode.Util (getInput)
 
-day03a :: IO Int
-day03a = do
-    input <- getInput "input/day03"
-    let (_, visited) = foldl' f ((0, 0), S.singleton (0, 0)) input
-    return $ S.size visited
+day03a :: String -> Int
+day03a input = S.size visited
   where
-    f ((x, y), visited) dir = ((nx, ny), nvisited)
+    (_, visited)        = foldl' f ((0, 0), S.singleton (0, 0)) input
+    f (xy, visited) dir = (nxy, nvisited)
       where
-        (nx, ny) = case dir of
-            '^' -> (x, y+1)
-            'v' -> (x, y-1)
-            '>' -> (x+1, y)
-            '<' -> (x-1, y)
-            _   -> error "no parse"
-        nvisited = S.insert (nx, ny) visited
+        nxy      = moveXY dir xy
+        nvisited = S.insert nxy visited
 
-day03b :: IO Int
-day03b = do
-    input <- getInput "input/day03"
-    let (_, visited1)    = foldl' f ((0, 0), S.singleton (0, 0)) input1
-        (_, visited2)    = foldl' f ((0, 0), S.singleton (0, 0)) input2
-        (input1, input2) = unthread input
-    return $ S.size $ S.union visited1 visited2
+moveXY :: Char -> (Int, Int) -> (Int, Int)
+moveXY '^' (x, y) = (x, y+1)
+moveXY 'v' (x, y) = (x, y-1)
+moveXY '>' (x, y) = (x+1, y)
+moveXY '<' (x, y) = (x-1, y)
+moveXY _   _      = error "moveXY: no parse"
+
+day03b :: String -> Int
+day03b input = S.size $ S.union visited1 visited2
   where
-    f ((x, y), visited) dir = ((nx, ny), nvisited)
+    (_, visited1)       = foldl' f ((0, 0), S.singleton (0, 0)) input1
+    (_, visited2)       = foldl' f ((0, 0), S.singleton (0, 0)) input2
+    (input1, input2)    = unthread input
+    f (xy, visited) dir = (nxy, nvisited)
       where
-        (nx, ny) = case dir of
-            '^' -> (x, y+1)
-            'v' -> (x, y-1)
-            '>' -> (x+1, y)
-            '<' -> (x-1, y)
-            _   -> error "no parse"
-        nvisited = S.insert (nx, ny) visited
+        nxy      = moveXY dir xy
+        nvisited = S.insert nxy visited
 
 unthread :: String -> (String, String)
 unthread = go [] [] False

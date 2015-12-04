@@ -5,18 +5,14 @@ import Data.List (foldl')
 
 import AdventofCode.Util (trim)
 
-day01a :: IO Int
-day01a = do
-    input <- trim <$> readFile "input/day01"
-    return $ foldl' act (0 :: Int) input
+day01a :: String -> Int
+day01a = foldl' act 0
   where
     act acc '(' = acc + 1
     act acc ')' = acc - 1
 
-day01b :: IO Int
-day01b = do
-    input <- trim <$> readFile "input/day01"
-    return $ go 1 0 input
+day01b :: String -> Int
+day01b = go 1 0
   where
     go :: Int -> Int -> String -> Int
     go !pos !floor ('(':xs) = go (pos+1) (floor+1) xs

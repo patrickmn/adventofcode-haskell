@@ -5,10 +5,8 @@ import Data.List.Split (splitOn)
 
 import AdventofCode.Util (getInput)
 
-day02a :: IO Int
-day02a = do
-    input <- getInput "input/day02"
-    return $ foldr (f . parse) 0 (lines input)
+day02a :: String -> Int
+day02a input = foldr (f . parse) 0 (lines input)
   where
     f (l, w, h) acc = acc + surface + minimum sides
       where
@@ -21,10 +19,8 @@ parse s = (read l, read w, read h)
     [l, w, h] = splitOn "x" s
     _         = error "no parse"
 
-day02b :: IO Int
-day02b = do
-    input <- getInput "input/day02"
-    return $ foldr (f . parse) 0 (lines input)
+day02b :: String -> Int
+day02b input = foldr (f . parse) 0 (lines input)
   where
     f (l, w, h) acc = acc + sm1 + sm1 + sm2 + sm2 + (l * w * h)
       where

@@ -1,17 +1,33 @@
-module Main where
+module AdventofCode.Day03 (day03a, day03b) where
 
 import Data.List (foldl')
 import qualified Data.Set as S
 
-import Util (trim)
+import AdventofCode.Util (getInput)
 
-main :: IO ()
-main = do
-    input <- trim <$> readFile "day03-input.txt"
+day03a :: IO Int
+day03a = do
+    input <- getInput "input/day03"
+    let (_, visited) = foldl' f ((0, 0), S.singleton (0, 0)) input
+    return $ S.size visited
+  where
+    f ((x, y), visited) dir = ((nx, ny), nvisited)
+      where
+        (nx, ny) = case dir of
+            '^' -> (x, y+1)
+            'v' -> (x, y-1)
+            '>' -> (x+1, y)
+            '<' -> (x-1, y)
+            _   -> error "no parse"
+        nvisited = S.insert (nx, ny) visited
+
+day03b :: IO Int
+day03b = do
+    input <- getInput "input/day03"
     let (_, visited1)    = foldl' f ((0, 0), S.singleton (0, 0)) input1
         (_, visited2)    = foldl' f ((0, 0), S.singleton (0, 0)) input2
         (input1, input2) = unthread input
-    print $ S.size $ S.union visited1 visited2
+    return $ S.size $ S.union visited1 visited2
   where
     f ((x, y), visited) dir = ((nx, ny), nvisited)
       where

@@ -1,0 +1,62 @@
+name:                adventofcode
+version:             0.1.0.0
+synopsis:            Haskell solutions for the Advent of Code game
+description:         
+homepage:            http://github.com/patrickmn/adventofcode-haskell/
+license:             BSD3
+license-file:        LICENSE
+author:              Patrick Mylund Nielsen
+maintainer:          haskell@patrickmn.com
+copyright:           2015 Patrick Mylund Nielsen
+category:            General
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     AdventofCode.Day01
+                       AdventofCode.Day02
+                       AdventofCode.Day03
+                       AdventofCode.Day04
+                       AdventofCode.Day05
+                       AdventofCode.Day06
+                       AdventofCode.Day07
+                       AdventofCode.Day08
+                       AdventofCode.Day09
+                       AdventofCode.Day10
+                       AdventofCode.Day11
+                       AdventofCode.Day12
+                       AdventofCode.Day13
+                       AdventofCode.Day14
+                       AdventofCode.Day15
+                       AdventofCode.Day16
+                       AdventofCode.Day17
+                       AdventofCode.Day18
+                       AdventofCode.Day19
+                       AdventofCode.Day20
+                       AdventofCode.Day21
+                       AdventofCode.Day22
+                       AdventofCode.Day23
+                       AdventofCode.Day24
+                       AdventofCode.Day25
+                       AdventofCode.Util
+  build-depends:       base >= 4.7 && < 5
+                     , bytestring
+                     , containers
+                     , cryptohash
+                     , split
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+
+executable adventofcode
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , adventofcode
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/patrickmn/adventofcode-haskell.git

@@ -6,11 +6,13 @@ import qualified Data.Set as S
 day03a :: String -> Int
 day03a input = S.size visited
   where
-    (_, visited)    = foldl' f ((0, 0), S.singleton (0, 0)) input
-    f (xy, vis) dir = (nxy, nvis)
-      where
-        nxy  = moveXY dir xy
-        nvis = S.insert nxy vis
+    (_, visited) = foldl' f ((0, 0), S.singleton (0, 0)) input
+
+f :: ((Int, Int), S.Set (Int, Int)) -> Char -> ((Int, Int), S.Set (Int, Int))
+f (xy, visited) dir = (nxy, nvisited)
+  where
+    nxy      = moveXY dir xy
+    nvisited = S.insert nxy visited
 
 moveXY :: Char -> (Int, Int) -> (Int, Int)
 moveXY '^' (x, y) = (x, y+1)
@@ -25,10 +27,6 @@ day03b input = S.size $ S.union visited1 visited2
     (_, visited1)       = foldl' f ((0, 0), S.singleton (0, 0)) input1
     (_, visited2)       = foldl' f ((0, 0), S.singleton (0, 0)) input2
     (input1, input2)    = unthread input
-    f (xy, visited) dir = (nxy, nvisited)
-      where
-        nxy      = moveXY dir xy
-        nvisited = S.insert nxy visited
 
 unthread :: String -> (String, String)
 unthread = go [] [] False

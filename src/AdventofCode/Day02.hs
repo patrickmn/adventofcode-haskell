@@ -4,7 +4,7 @@ import Data.List (sort)
 import Data.List.Split (splitOn)
 
 day02a :: String -> Int
-day02a input = foldr (f . parse) 0 (lines input)
+day02a = foldr (f . parse) 0 . lines
   where
     f (l, w, h) acc = acc + surface + minimum sides
       where
@@ -18,7 +18,7 @@ parse s = (read l, read w, read h)
     _         = error "no parse"
 
 day02b :: String -> Int
-day02b input = foldr (f . parse) 0 (lines input)
+day02b = foldr (f . parse) 0 . lines
   where
     f (l, w, h) acc = acc + sm1 + sm1 + sm2 + sm2 + (l * w * h)
       where

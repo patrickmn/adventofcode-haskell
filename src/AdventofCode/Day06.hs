@@ -32,7 +32,7 @@ day06a input = runST $ do
         skip = 1000
     v <- VUM.replicate vlen False
     let actions = map (getAction skip) (lines input)
-    forM_ actions $ \cmd -> case cmd of
+    forM_ actions $ \act -> case act of
         TurnOn  is -> mapM_ (\i -> VUM.write v i True) is
         TurnOff is -> mapM_ (\i -> VUM.write v i False) is
         Toggle  is -> mapM_ (VUM.modify v not) is
@@ -46,7 +46,7 @@ day06b input = runST $ do
         skip = 1000
     v <- VUM.replicate vlen 0
     let actions = map (getAction skip) (lines input)
-    forM_ actions $ \cmd -> case cmd of
+    forM_ actions $ \act -> case act of
         TurnOn  is -> mapM_ (VUM.modify v (+1)) is
         TurnOff is -> mapM_ (VUM.modify v (\n -> max 0 (n-1))) is
         Toggle  is -> mapM_ (VUM.modify v (+2)) is

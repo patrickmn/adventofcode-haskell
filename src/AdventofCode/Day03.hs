@@ -24,9 +24,9 @@ moveXY _   _      = error "moveXY: no parse"
 day03b :: String -> Int
 day03b input = S.size $ S.union visited1 visited2
   where
-    (_, visited1)       = foldl' f ((0, 0), S.singleton (0, 0)) input1
-    (_, visited2)       = foldl' f ((0, 0), S.singleton (0, 0)) input2
-    (input1, input2)    = unthread input
+    (_, visited1)    = foldl' f ((0, 0), S.singleton (0, 0)) input1
+    (_, visited2)    = foldl' f ((0, 0), S.singleton (0, 0)) input2
+    (input1, input2) = unthread input
 
 unthread :: String -> (String, String)
 unthread = go [] [] False

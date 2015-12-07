@@ -6,11 +6,12 @@ import qualified Data.Set as S
 day05a :: String -> Int
 day05a = length . filter isNice . lines
   where
-    isNice s = not (null (drop 2 vowels)) && hasSame && not hasBad
+    isNice s = has3Vowels && hasSame && not hasBad
       where
-        vowels  = filter (`S.member` S.fromAscList "aeiou") s
-        hasSame = any (not . null . drop 1) $ group s
-        hasBad  = any ((`S.member` bad) . take 2) $ tails s
+        has3Vowels = not $ null $ drop 2 $ filter (`S.member` vowels) s
+        hasSame    = any (not . null . drop 1) $ group s
+        hasBad     = any ((`S.member` bad) . take 2) $ tails s
+    vowels   = S.fromAscList "aeiou"
     bad      = S.fromAscList ["ab", "cd", "pq", "xy"]
 
 day05b :: String -> Int

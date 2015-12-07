@@ -37,7 +37,7 @@ applyWire c = mf
   where
     mf                = memoize f
     f s               = case c H.! s of
-        (And x y)    -> get x .&. get y
+        (x `And` y)    -> get x .&. get y
         (Or x y)     -> get x .|. get y
         (Lshift x y) -> get x `shiftL` fromIntegral (get y)
         (Rshift x y) -> get x `shiftR` fromIntegral (get y)

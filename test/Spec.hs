@@ -94,4 +94,4 @@ main = hspec $ do
         ]
 
 shouldsBe :: (IsString a, Show a) => (a -> Int) -> [(a, Int)] -> Spec
-shouldsBe fun = mapM_ (\(input, v) -> it (show input) $ fun input `shouldBe` v)
+shouldsBe f = mapM_ (\(input, v) -> it (show input) $ f input `shouldBe` v)

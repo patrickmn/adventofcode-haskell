@@ -8,10 +8,10 @@ import qualified Data.HashMap.Strict as H
 
 type Circuit = H.HashMap String Op
 
-data Op = And Wire Wire
-        | Or Wire Wire
-        | Lshift Wire Wire
-        | Rshift Wire Wire
+data Op = Wire `And`    Wire
+        | Wire `Or`     Wire
+        | Wire `Lshift` Wire
+        | Wire `Rshift` Wire
         | Not Wire
         | NoOp Wire
 
@@ -24,12 +24,12 @@ newWire s = case readMaybe s of
     Just n  -> Value n
 
 parse :: [String] -> (String, Op)
-parse [x, "AND",    y, "->", w] = (w, And (newWire x) (newWire y))
-parse [x, "OR",     y, "->", w] = (w, Or (newWire x) (newWire y))
-parse [x, "LSHIFT", y, "->", w] = (w, Lshift (newWire x) (newWire y))
-parse [x, "RSHIFT", y, "->", w] = (w, Rshift (newWire x) (newWire y))
-parse ["NOT",       x, "->", w] = (w, Not (newWire x))
-parse [x,              "->", w] = (w, NoOp (newWire x))
+parse [x, "AND",    y, "->", w] = (w, newWire x `And`    newWire y)
+parse [x, "OR",     y, "->", w] = (w, newWire x `Or`     newWire y)
+parse [x, "LSHIFT", y, "->", w] = (w, newWire x `Lshift` newWire y)
+parse [x, "RSHIFT", y, "->", w] = (w, newWire x `Rshift` newWire y)
+parse ["NOT",       x, "->", w] = (w, Not $ newWire x)
+parse [x,              "->", w] = (w, NoOp $ newWire x)
 parse _                         = error "no parse"
 
 applyWire :: Circuit -> String -> Word16
@@ -38,11 +38,11 @@ applyWire c = mf
     mf                = memoize f
     f s               = case c H.! s of
         (x `And` y)    -> get x .&. get y
-        (Or x y)     -> get x .|. get y
-        (Lshift x y) -> get x `shiftL` fromIntegral (get y)
-        (Rshift x y) -> get x `shiftR` fromIntegral (get y)
-        (Not x)      -> complement $ get x
-        (NoOp x)     -> get x
+        (x `Or` y)     -> get x .|. get y
+        (x `Lshift` y) -> get x `shiftL` fromIntegral (get y)
+        (x `Rshift` y) -> get x `shiftR` fromIntegral (get y)
+        (Not x)        -> complement $ get x
+        (NoOp x)       -> get x
     get (Ident ident) = mf ident
     get (Value val)   = val
 

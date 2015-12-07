@@ -22,7 +22,7 @@ parseOp [x, "LSHIFT", y, "->", w] = (w, newWire x `Lshift` newWire y)
 parseOp [x, "RSHIFT", y, "->", w] = (w, newWire x `Rshift` newWire y)
 parseOp ["NOT",       x, "->", w] = (w, Not  $ newWire x)
 parseOp [x,              "->", w] = (w, NoOp $ newWire x)
-parseOp _                         = error "no parseOp"
+parseOp _                         = error "parseOp: no parse"
 
 data Wire = Ident String
           | Value Word16

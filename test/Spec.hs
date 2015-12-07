@@ -92,6 +92,21 @@ main = hspec $ do
         [ ("turn on 0,0 through 0,0",    1)
         , ("toggle 0,0 through 999,999", 2000000)
         ]
+    describe "day07" $ shouldsBe day07a
+        [ (unlines [ "123 -> x"
+                   , "456 -> y"
+                   , "x AND y -> d"
+                   , "x OR y -> e"
+                   , "x LSHIFT 2 -> f"
+                   , "y RSHIFT 2 -> g"
+                   , "NOT x -> h"
+                   , "NOT y -> i"
+                   , "i -> a"
+                   ], 65079)
+        ]
 
-shouldsBe :: (IsString a, Show a) => (a -> Int) -> [(a, Int)] -> Spec
+shouldsBe :: (IsString a, Show a, Eq b, Show b)
+          => (a -> b)
+          -> [(a, b)]
+          -> Spec
 shouldsBe f = mapM_ (\(input, v) -> it (show input) $ f input `shouldBe` v)

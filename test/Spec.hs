@@ -79,6 +79,7 @@ main = hspec $ do
     describe "day05b" $ shouldsBe day05b
         [ ("qjhvhtzxzqqjkmpb", 1)
         , ("xxyxx",            1)
+        , ("aaaa",             1)
         , ("uurcxstgmygtbstg", 0)
         , ("ieodomkazucvgmuy", 0)
         ]

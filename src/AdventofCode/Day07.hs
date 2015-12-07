@@ -12,7 +12,7 @@ data Op = Wire `And`    Wire
         | Wire `Or`     Wire
         | Wire `Lshift` Wire
         | Wire `Rshift` Wire
-        | Not Wire
+        | Not  Wire
         | NoOp Wire
 
 parseOp :: [String] -> (String, Op)
@@ -20,7 +20,7 @@ parseOp [x, "AND",    y, "->", w] = (w, newWire x `And`    newWire y)
 parseOp [x, "OR",     y, "->", w] = (w, newWire x `Or`     newWire y)
 parseOp [x, "LSHIFT", y, "->", w] = (w, newWire x `Lshift` newWire y)
 parseOp [x, "RSHIFT", y, "->", w] = (w, newWire x `Rshift` newWire y)
-parseOp ["NOT",       x, "->", w] = (w, Not $ newWire x)
+parseOp ["NOT",       x, "->", w] = (w, Not  $ newWire x)
 parseOp [x,              "->", w] = (w, NoOp $ newWire x)
 parseOp _                         = error "no parseOp"
 
@@ -37,11 +37,11 @@ applyWire c = mf
   where
     mf                = memoize f
     f s               = case c H.! s of
-        (x `And` y)    -> get x .&. get y
-        (x `Or` y)     -> get x .|. get y
+        (x `And`    y) -> get x .&. get y
+        (x `Or`     y) -> get x .|. get y
         (x `Lshift` y) -> get x `shiftL` fromIntegral (get y)
         (x `Rshift` y) -> get x `shiftR` fromIntegral (get y)
-        (Not x)        -> complement $ get x
+        (Not  x)       -> complement $ get x
         (NoOp x)       -> get x
     get (Ident ident) = mf ident
     get (Value val)   = val

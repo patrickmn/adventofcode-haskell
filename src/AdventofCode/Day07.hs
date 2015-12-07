@@ -15,6 +15,15 @@ data Op = Wire `And`    Wire
         | Not Wire
         | NoOp Wire
 
+parseOp :: [String] -> (String, Op)
+parseOp [x, "AND",    y, "->", w] = (w, newWire x `And`    newWire y)
+parseOp [x, "OR",     y, "->", w] = (w, newWire x `Or`     newWire y)
+parseOp [x, "LSHIFT", y, "->", w] = (w, newWire x `Lshift` newWire y)
+parseOp [x, "RSHIFT", y, "->", w] = (w, newWire x `Rshift` newWire y)
+parseOp ["NOT",       x, "->", w] = (w, Not $ newWire x)
+parseOp [x,              "->", w] = (w, NoOp $ newWire x)
+parseOp _                         = error "no parseOp"
+
 data Wire = Ident String
           | Value Word16
 
@@ -22,15 +31,6 @@ newWire :: String -> Wire
 newWire s = case readMaybe s of
     Nothing -> Ident s
     Just n  -> Value n
-
-parse :: [String] -> (String, Op)
-parse [x, "AND",    y, "->", w] = (w, newWire x `And`    newWire y)
-parse [x, "OR",     y, "->", w] = (w, newWire x `Or`     newWire y)
-parse [x, "LSHIFT", y, "->", w] = (w, newWire x `Lshift` newWire y)
-parse [x, "RSHIFT", y, "->", w] = (w, newWire x `Rshift` newWire y)
-parse ["NOT",       x, "->", w] = (w, Not $ newWire x)
-parse [x,              "->", w] = (w, NoOp $ newWire x)
-parse _                         = error "no parse"
 
 applyWire :: Circuit -> String -> Word16
 applyWire c = mf
@@ -49,11 +49,11 @@ applyWire c = mf
 day07a :: String -> Word16
 day07a input = applyWire c "a"
   where
-    c = H.fromList $ map (parse . words) (lines input)
+    c = H.fromList $ map (parseOp . words) (lines input)
 
 day07b :: String -> Word16
 day07b input = applyWire nc "a"
   where
     nc   = H.insert "b" (NoOp $ Value bega) c
     bega = applyWire c "a"
-    c    = H.fromList $ map (parse . words) (lines input)
+    c    = H.fromList $ map (parseOp . words) (lines input)

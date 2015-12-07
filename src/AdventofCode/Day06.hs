@@ -5,15 +5,15 @@ import Control.Monad.ST (runST)
 import Data.List.Split (splitOn)
 import qualified Data.Vector.Unboxed.Mutable as VUM
 
-data Action = TurnOn [Int]
+data Action = TurnOn  [Int]
             | TurnOff [Int]
-            | Toggle [Int]
+            | Toggle  [Int]
 
 getAction :: Int -> String -> Action
 getAction skip s = case words s of
-    ["turn", "on", xy, "through", oxy]  -> TurnOn $ getIndices skip (parseCoords xy) (parseCoords oxy)
+    ["turn", "on",  xy, "through", oxy] -> TurnOn  $ getIndices skip (parseCoords xy) (parseCoords oxy)
     ["turn", "off", xy, "through", oxy] -> TurnOff $ getIndices skip (parseCoords xy) (parseCoords oxy)
-    ["toggle", xy, "through", oxy]      -> Toggle $ getIndices skip (parseCoords xy) (parseCoords oxy)
+    ["toggle",      xy, "through", oxy] -> Toggle  $ getIndices skip (parseCoords xy) (parseCoords oxy)
     _                                   -> error "getAction: no parse"
 
 getIndices :: Int -> (Int, Int) -> (Int, Int) -> [Int]

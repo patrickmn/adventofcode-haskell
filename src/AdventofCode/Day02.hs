@@ -15,7 +15,6 @@ parse :: String -> (Int, Int, Int)
 parse s = (read l, read w, read h)
   where
     [l, w, h] = splitOn "x" s
-    _         = error "no parse"
 
 day02b :: String -> Int
 day02b = foldr (f . parse) 0 . lines

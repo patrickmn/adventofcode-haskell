@@ -24,7 +24,6 @@ parseCoords :: String -> (Int, Int)
 parseCoords s = (read x, read y)
   where
     [x, y] = splitOn "," s
-    _      = error "parseCoords: no parse"
 
 day06a :: String -> Int
 day06a input = runST $ do

@@ -104,6 +104,12 @@ main = hspec $ do
                    , "i -> a"
                    ], 65079)
         ]
+    describe "day08a" $ shouldsBe day08a
+        [ ("\"\"\n\"abc\"\"aaa\\\"aaa\"\"\\x27\"", 12)
+        ]
+    describe "day08b" $ shouldsBe day08b
+        [ ("\"\"\n\"abc\"\"aaa\\\"aaa\"\"\\x27\"", 19)
+        ]
 
 shouldsBe :: (IsString a, Show a, Eq b, Show b)
           => (a -> b)

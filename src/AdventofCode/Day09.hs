@@ -10,8 +10,8 @@ day09 :: String -> [Int]
 day09 input = map routeSum possibleRoutes
   where
     routeSum locs  = sum $ map (dist H.!) (zip locs (tail locs))
-    possibleRoutes = permutations $ nub $ map fst $ H.keys dist
-    dist           = H.fromList $ concatMap (parse . words) $ lines input
+    possibleRoutes = permutations $ nub $ map fst (H.keys dist)
+    dist           = H.fromList $ concatMap (parse . words) (lines input)
 
 parse :: [String] -> [((String, String), Int)]
 parse [x, "to", y, "=", n] = [((x, y), rn), ((y, x), rn)]

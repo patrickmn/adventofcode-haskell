@@ -104,12 +104,21 @@ main = hspec $ do
                    , "i -> a"
                    ], 65079)
         ]
-    describe "day08a" $ shouldsBe day08a
-        [ ("\"\"\n\"abc\"\"aaa\\\"aaa\"\"\\x27\"", 12)
-        ]
-    describe "day08b" $ shouldsBe day08b
-        [ ("\"\"\n\"abc\"\"aaa\\\"aaa\"\"\\x27\"", 19)
-        ]
+    let day08 = unlines
+            [ "\"\""
+            , "\"abc\""
+            , "\"aaa\\\"aaa\""
+            , "\"\\x27\""
+            ]
+    describe "day08a" $ shouldsBe day08a [(day08, 12)]
+    describe "day08b" $ shouldsBe day08b [(day08, 19)]
+    let day09 = unlines
+            [ "London to Dublin = 464"
+            , "London to Belfast = 518"
+            , "Dublin to Belfast = 141"
+            ]
+    describe "day09a" $ shouldsBe day09a [(day09, 605)]
+    describe "day09b" $ shouldsBe day09b [(day09, 982)]
 
 shouldsBe :: (IsString a, Show a, Eq b, Show b)
           => (a -> b)

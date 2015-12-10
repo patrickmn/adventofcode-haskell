@@ -119,6 +119,13 @@ main = hspec $ do
             ]
     describe "day09a" $ shouldsBe day09a [(day09, 605)]
     describe "day09b" $ shouldsBe day09b [(day09, 982)]
+    describe "day10" $ shouldsBe day10a
+        [ ("1",      82350)
+        , ("11",     107312)
+        , ("21",     139984)
+        , ("1211",   182376)
+        , ("111221", 237746)
+        ]
 
 shouldsBe :: (IsString a, Show a, Eq b, Show b)
           => (a -> b)

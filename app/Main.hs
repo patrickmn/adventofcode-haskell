@@ -1,7 +1,7 @@
 module Main (main) where
 
 import Control.Concurrent (setNumCapabilities)
-import Control.Monad (forM_, liftM)
+import Control.Monad (forM_)
 import GHC.Conc (getNumProcessors)
 import System.Environment (getArgs)
 import Text.Printf (printf)

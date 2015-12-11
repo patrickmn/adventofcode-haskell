@@ -45,7 +45,6 @@ library
                      , bytestring
                      , containers
                      , cryptohash
-                     , digits
                      , memoize
                      , split
                      , unordered-containers

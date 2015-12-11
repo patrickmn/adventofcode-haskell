@@ -126,6 +126,10 @@ main = hspec $ do
         , ("1211",   182376)
         , ("111221", 237746)
         ]
+    describe "day11a" $ shouldsBe day11a
+        [ ("abcdefgh", "abcdffaa")
+        , ("ghijklmn", "ghjaabcc")
+        ]
 
 shouldsBe :: (IsString a, Show a, Eq b, Show b)
           => (a -> b)

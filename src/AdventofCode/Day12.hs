@@ -26,7 +26,7 @@ day12b = jsum . fromJust . AE.decodeStrict
                            in if any isRed (H.elems v)
                                   then 0
                                   else sum $ map jsum es
-    jsum (AE.Array v)   = foldr (\ov acc -> acc + jsum ov) 0 v
+    jsum (AE.Array v)   = foldr ((+) . jsum) 0 v
     jsum (AE.Number v)  = fromJust $ toBoundedInteger v
     jsum _              = 0
     isRed (AE.String v) = v == "red"

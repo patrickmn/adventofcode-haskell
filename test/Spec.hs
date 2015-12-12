@@ -130,6 +130,21 @@ main = hspec $ do
         [ ("abcdefgh", "abcdffaa")
         , ("ghijklmn", "ghjaabcc")
         ]
+    describe "day12a" $ shouldsBe day12a
+        [ ("[1,2,3]",                    6)
+        , ("{\"a\":2,\"b\":4}",          6)
+        , ("[[[3]]]",                    3)
+        , ("{\"a\":{\"b\":4},\"c\":-1}", 3)
+        , ("{\"a\":[-1,1]}",             0)
+        , ("[]",                         0)
+        , ("{}",                         0)
+        ]
+    describe "day12b" $ shouldsBe day12b
+        [ ("[1,2,3]",                                 6)
+        , ("[1,{\"c\":\"red\",\"b\":2},3]",           4)
+        , ("{\"d\":\"red\",\"e\":[1,2,3,4],\"f\":5}", 0)
+        , ("[1,\"red\",5]",                           6)
+        ]
 
 shouldsBe :: (IsString a, Show a, Eq b, Show b)
           => (a -> b)

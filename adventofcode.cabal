@@ -42,10 +42,12 @@ library
                        AdventofCode.Day25
                        AdventofCode.Util
   build-depends:       base >= 4.7 && < 5
+                     , aeson
                      , bytestring
                      , containers
                      , cryptohash
                      , memoize
+                     , scientific
                      , split
                      , unordered-containers
                      , vector

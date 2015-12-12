@@ -28,4 +28,4 @@ increment (x:xs)     = succ x : xs
 increment []         = []
 
 day11b :: String -> String
-day11b = head . drop 1 . nextPasswords
+day11b = (!! 1) . nextPasswords

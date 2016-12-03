@@ -36,12 +36,10 @@ import Util (shouldsBe)
 runTests :: IO ()
 runTests = hspec $ do
     describe "day01a" $ shouldsBe day01a
-        [ ("(())",    0)
-        , ("()()",    0)
-        , ("(((",     3)
-        , ("(()(()(", 3)
-        , ("))(((((", 3)
-        , ("())",    -1)
-        , ("))(",    -1)
-        , (")))",    -3)
+        [ ("R2, L3",         5)
+        , ("R2, R2, R2",     2)
+        , ("R5, L5, R5, R3", 12)
+        ]
+    describe "day01b" $ shouldsBe day01b
+        [ ("R8, R4, R4, R8", 4)
         ]

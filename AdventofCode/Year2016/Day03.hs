@@ -3,7 +3,7 @@ module AdventofCode.Year2016.Day03 (day03a, day03b) where
 import AdventofCode.Util (trimLeft)
 
 day03a :: String -> Int
-day03a input = length $ filter isTriangle $ parse input
+day03a = length . filter isTriangle . parse
 
 isTriangle :: (Int, Int, Int) -> Bool
 isTriangle (a, b, c) = a + b > c && a + c > b && b + c > a

@@ -43,3 +43,6 @@ runTests = hspec $ do
     describe "day01b" $ shouldsBe day01b
         [ ("R8, R4, R4, R8", 4)
         ]
+    describe "day02a" $ shouldsBe day02a
+        [ ("ULL\nRRDDD\nLURDL\nUUUUD", "1985")
+        ]

@@ -94,6 +94,9 @@ test-suite adventofcode-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
+  other-modules:       Util
+                       Year2015
+                       Year2016
   build-depends:       base
                      , adventofcode
                      , bytestring

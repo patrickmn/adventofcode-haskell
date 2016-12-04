@@ -9,7 +9,7 @@ isTriangle :: (Int, Int, Int) -> Bool
 isTriangle (a, b, c) = a + b > c && a + c > b && b + c > a
 
 parse :: String -> [(Int, Int, Int)]
-parse input = map f $ lines input
+parse = map f . lines
   where
     f s = ( read $ trimLeft $ take 5 s
           , read $ trimLeft $ take 5 $ drop 5 s
@@ -17,7 +17,7 @@ parse input = map f $ lines input
           )
 
 day03b :: String -> Int
-day03b input = length $ filter isTriangle $ go $ parse input
+day03b = length . filter isTriangle . go . parse
   where
     go []                                                = []
     go ((a1, a2, a3) : (b1, b2, b3) : (c1, c2, c3) : xs) =

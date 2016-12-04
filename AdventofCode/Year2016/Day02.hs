@@ -8,7 +8,7 @@ data Instruction = U
                  | R
 
 day02a :: String -> String
-day02a input = run move (parse input)
+day02a = run move . parse
 
 run :: (Char -> Instruction -> Char) -> [[Instruction]] -> String
 run f instrs = reverse $ fst $ foldl' getCode ([], '5') instrs
@@ -41,7 +41,7 @@ move '9' U = '6'; move '9' L = '8'
 move c   _ = c
 
 day02b :: String -> String
-day02b input = run move2 (parse input)
+day02b = run move2 . parse
 
 move2 :: Char -> Instruction -> Char
 move2 '1' D = '3'

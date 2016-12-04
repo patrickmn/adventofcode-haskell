@@ -67,7 +67,7 @@ main = do
     args <- getArgs
     case args of
         []        -> usage
-        (_:[])    -> usage
+        [_]       -> usage
         (year:xs) -> case year of
             "2015" -> mapM_ run2015 xs
             "2016" -> mapM_ run2016 xs

@@ -37,13 +37,11 @@ day04b :: String -> Int
 day04b = sectorId . fromJust . find (("northpole object storage" ==) . name) .
          map decrypt . filter validRoom . parse
   where
-    decrypt room@Room{..} = room { name = shift sectorId name }
+    decrypt room@Room{..} = room { name = map (rot sectorId) name }
 
-shift :: Int -> String -> String
-shift ntimes = map (rot ntimes)
-    where
-      rot n c
-          | c == '-'  = ' '
-          | isUpper c = chr $ ((ord c - ord 'A' + n) `mod` 26) + ord 'A'
-          | isLower c = chr $ ((ord c - ord 'a' + n) `mod` 26) + ord 'a'
-          | otherwise = c
+rot :: Int -> Char -> Char
+rot n c
+    | c == '-'  = ' '
+    | isUpper c = chr $ ((ord c - ord 'A' + n) `mod` 26) + ord 'A'
+    | isLower c = chr $ ((ord c - ord 'a' + n) `mod` 26) + ord 'a'
+    | otherwise = c

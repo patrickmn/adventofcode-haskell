@@ -138,8 +138,8 @@ run2016 "3a"  = getInput "input/2016/day03" >>= print . Y16.day03a
 run2016 "3b"  = getInput "input/2016/day03" >>= print . Y16.day03b
 run2016 "4a"  = getInput "input/2016/day04" >>= print . Y16.day04a
 run2016 "4b"  = getInput "input/2016/day04" >>= print . Y16.day04b
-run2016 "5a"  = getInput "input/2016/day05" >>= print . Y16.day05a
-run2016 "5b"  = getInput "input/2016/day05" >>= print . Y16.day05b
+run2016 "5a"  = getInput "input/2016/day05" >>= print . Y16.day05a . BC.pack
+run2016 "5b"  = getInput "input/2016/day05" >>= print . Y16.day05b . BC.pack
 run2016 "6a"  = getInput "input/2016/day06" >>= print . Y16.day06a
 run2016 "6b"  = getInput "input/2016/day06" >>= print . Y16.day06b
 run2016 "7a"  = getInput "input/2016/day07" >>= print . Y16.day07a

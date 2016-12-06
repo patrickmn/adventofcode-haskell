@@ -49,3 +49,9 @@ runTests = hspec $ do
     describe "day04a" $ shouldsBe day04a
         [ ("aaaaa-bbb-z-y-x-123[abxyz]\na-b-c-d-e-f-g-h-987[abcde]\nnot-a-real-room-404[oarel]\ntotally-real-room-200[decoy]", 1514)
         ]
+    describe "day05a" $ shouldsBe day05a
+        [ ("abc", "18f47a30")
+        ]
+    describe "day05b" $ shouldsBe day05b
+        [ ("abc", "05ace8e3")
+        ]

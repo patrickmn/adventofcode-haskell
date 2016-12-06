@@ -15,7 +15,9 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      .
-  exposed-modules:     AdventofCode.Year2015.Day01
+  exposed-modules:     AdventofCode.Common
+                       AdventofCode.Util
+                       AdventofCode.Year2015.Day01
                        AdventofCode.Year2015.Day02
                        AdventofCode.Year2015.Day03
                        AdventofCode.Year2015.Day04
@@ -65,7 +67,6 @@ library
                        AdventofCode.Year2016.Day23
                        AdventofCode.Year2016.Day24
                        AdventofCode.Year2016.Day25
-                       AdventofCode.Util
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , bytestring

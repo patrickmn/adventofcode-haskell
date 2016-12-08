@@ -4,7 +4,6 @@
 module Main (main) where
 
 import ClassyPrelude
-import Control.Monad (forM_)
 import GHC.Conc (getNumProcessors)
 import Text.Printf (printf)
 import qualified Data.ByteString.Char8 as BC

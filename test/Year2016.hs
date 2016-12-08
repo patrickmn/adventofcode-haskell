@@ -49,9 +49,17 @@ runTests = hspec $ do
     describe "day04a" $ shouldsBe day04a
         [ ("aaaaa-bbb-z-y-x-123[abxyz]\na-b-c-d-e-f-g-h-987[abcde]\nnot-a-real-room-404[oarel]\ntotally-real-room-200[decoy]", 1514)
         ]
-    describe "day05a" $ shouldsBe day05a
-        [ ("abc", "18f47a30")
+    -- These pass but are disabled because they take too long to run
+    -- (MD5 preimage problems)
+    -- describe "day05a" $ shouldsBe day05a
+    --     [ ("abc", "18f47a30")
+    --     ]
+    -- describe "day05b" $ shouldsBe day05b
+    --     [ ("abc", "05ace8e3")
+    --     ]
+    describe "day06a" $ shouldsBe day06a
+        [ ("eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar", "easter")
         ]
-    describe "day05b" $ shouldsBe day05b
-        [ ("abc", "05ace8e3")
+    describe "day06b" $ shouldsBe day06b
+        [ ("eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar", "advent")
         ]

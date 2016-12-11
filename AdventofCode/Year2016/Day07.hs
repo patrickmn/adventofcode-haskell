@@ -14,11 +14,8 @@ isTls seqs = any hasAbba supers && not (any hasAbba hypers)
     (supers, hypers) = partitionSequences seqs
 
 hasAbba :: String -> Bool
-hasAbba []             = False
-hasAbba [_]            = False
-hasAbba [_, _]         = False
-hasAbba [_, _, _]      = False
 hasAbba xs@(a:b:c:d:_) = (a == d && b == c && a /= b) || hasAbba (drop 1 xs)
+hasAbba _              = False
 
 partitionSequences :: [Sequence] -> ([String], [String])
 partitionSequences = foldr go ([], [])
@@ -44,19 +41,15 @@ isSsl seqs = any (hasBab hypers) $ concatMap abas supers
     (supers, hypers) = partitionSequences seqs
 
 abas :: String -> [(Char, Char, Char)]
-abas []           = []
-abas [_]          = []
-abas [_, _]       = []
 abas xs@(a:b:c:_) = if a == c && a /= b
     then (a, b, c) : abas (drop 1 xs)
     else abas (drop 1 xs)
+abas _            = []
 
 hasBab :: [String] -> (Char, Char, Char) -> Bool
 hasBab []     _   = False
 hasBab (x:xs) aba = go x aba || hasBab xs aba
   where
-    go []            _            = False
-    go [_]           _            = False
-    go [_, _]        _            = False
     go xs'@(a':b':c':_) (a, b, c) = (a' == b && b' == a && c' == b) ||
         go (drop 1 xs') (a, b, c)
+    go _             _            = False

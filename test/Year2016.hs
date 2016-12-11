@@ -63,3 +63,9 @@ runTests = hspec $ do
     describe "day06b" $ shouldsBe day06b
         [ ("eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar", "advent")
         ]
+    describe "day07a" $ shouldsBe day07a
+        [ ("abba[mnop]qrst\nabcd[bddb]xyyx\naaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn", 2)
+        ]
+    describe "day07b" $ shouldsBe day07b
+        [ ("aba[bab]xyz\nxyx[xyx]xyx\naaa[kek]eke\nzazbz[bzb]cdb", 3)
+        ]

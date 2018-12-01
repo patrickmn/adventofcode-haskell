@@ -36,4 +36,14 @@ import Util (shouldsBe)
 runTests :: IO ()
 runTests = hspec $ do
     describe "day01a" $ shouldsBe day01a
-        [ ("1122",     3)
+        [ ("+1\n-2\n+3\n+1", 3)
+        , ("+1\n+1\n+1", 3)
+        , ("+1\n+1\n-2", 0)
+        , ("-1\n-2\n-3", -6)
+        ]
+    describe "day01b" $ shouldsBe day01b
+        [ ("+1\n-1", 0)
+        , ("+3\n+3\n+4\n-2\n-4", 10)
+        , ("-6\n+3\n+8\n+5\n-6", 5)
+        , ("+7\n+7\n-2\n-7\n-4", 14)
+        ]

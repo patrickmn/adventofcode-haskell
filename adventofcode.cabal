@@ -67,6 +67,56 @@ library
                        AdventofCode.Year2016.Day23
                        AdventofCode.Year2016.Day24
                        AdventofCode.Year2016.Day25
+                       AdventofCode.Year2017.Day01
+                       AdventofCode.Year2017.Day02
+                       AdventofCode.Year2017.Day03
+                       AdventofCode.Year2017.Day04
+                       AdventofCode.Year2017.Day05
+                       AdventofCode.Year2017.Day06
+                       AdventofCode.Year2017.Day07
+                       AdventofCode.Year2017.Day08
+                       AdventofCode.Year2017.Day09
+                       AdventofCode.Year2017.Day10
+                       AdventofCode.Year2017.Day11
+                       AdventofCode.Year2017.Day12
+                       AdventofCode.Year2017.Day13
+                       AdventofCode.Year2017.Day14
+                       AdventofCode.Year2017.Day15
+                       AdventofCode.Year2017.Day16
+                       AdventofCode.Year2017.Day17
+                       AdventofCode.Year2017.Day18
+                       AdventofCode.Year2017.Day19
+                       AdventofCode.Year2017.Day20
+                       AdventofCode.Year2017.Day21
+                       AdventofCode.Year2017.Day22
+                       AdventofCode.Year2017.Day23
+                       AdventofCode.Year2017.Day24
+                       AdventofCode.Year2017.Day25
+                       AdventofCode.Year2018.Day01
+                       AdventofCode.Year2018.Day02
+                       AdventofCode.Year2018.Day03
+                       AdventofCode.Year2018.Day04
+                       AdventofCode.Year2018.Day05
+                       AdventofCode.Year2018.Day06
+                       AdventofCode.Year2018.Day07
+                       AdventofCode.Year2018.Day08
+                       AdventofCode.Year2018.Day09
+                       AdventofCode.Year2018.Day10
+                       AdventofCode.Year2018.Day11
+                       AdventofCode.Year2018.Day12
+                       AdventofCode.Year2018.Day13
+                       AdventofCode.Year2018.Day14
+                       AdventofCode.Year2018.Day15
+                       AdventofCode.Year2018.Day16
+                       AdventofCode.Year2018.Day17
+                       AdventofCode.Year2018.Day18
+                       AdventofCode.Year2018.Day19
+                       AdventofCode.Year2018.Day20
+                       AdventofCode.Year2018.Day21
+                       AdventofCode.Year2018.Day22
+                       AdventofCode.Year2018.Day23
+                       AdventofCode.Year2018.Day24
+                       AdventofCode.Year2018.Day25
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , bytestring
@@ -74,6 +124,8 @@ library
                      , containers
                      , cryptohash
                      , memoize
+                     , mtl
+                     , primitive
                      , scientific
                      , split
                      , unordered-containers
@@ -99,6 +151,8 @@ test-suite adventofcode-test
   other-modules:       Util
                        Year2015
                        Year2016
+                       Year2017
+                       Year2018
   build-depends:       base
                      , adventofcode
                      , bytestring

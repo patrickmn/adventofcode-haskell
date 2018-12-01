@@ -69,3 +69,6 @@ runTests = hspec $ do
     describe "day07b" $ shouldsBe day07b
         [ ("aba[bab]xyz\nxyx[xyx]xyx\naaa[kek]eke\nzazbz[bzb]cdb", 3)
         ]
+    -- describe "day08a" $ shouldsBe day08a
+    --     [ ("rect 3x2\nrotate column x=1 by 1\nrotate row y=0 by 4\nrotate column x=1 by 1", 6)
+    --     ]

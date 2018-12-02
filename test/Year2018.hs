@@ -47,3 +47,9 @@ runTests = hspec $ do
         , ("-6\n+3\n+8\n+5\n-6", 5)
         , ("+7\n+7\n-2\n-7\n-4", 14)
         ]
+    describe "day02a" $ shouldsBe day02a
+        [ ("abcdef\nbababc\nabbcde\nabcccd\naabcdd\nabcdee\nababab", 12)
+        ]
+    describe "day02b" $ shouldsBe day02b
+        [ ("abcde\nfghij\nklmno\npqrst\nfguij\naxcye\nwvxyz", "fgij")
+        ]

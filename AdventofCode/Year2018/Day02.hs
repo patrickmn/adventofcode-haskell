@@ -5,8 +5,8 @@ import Data.List (group, sort)
 day02a :: String -> Int
 day02a input = numTwo * numThree
   where
-    numTwo   = sum [1 | x <- grouped, any ((== 2) . length) x]
-    numThree = sum [1 | x <- grouped, any ((== 3) . length) x]
+    numTwo   = length $ filter (any ((== 2) . length)) grouped
+    numThree = length $ filter (any ((== 3) . length)) grouped
     grouped  = map (group . sort) $ lines input
 
 day02b :: String -> String
